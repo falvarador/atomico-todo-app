@@ -1,0 +1,32 @@
+{
+	"name": "todo-app",
+	"private": true,
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"format": "prettier --write .",
+		"lint": "eslint --fix . --ext .js,.jsx,.ts,.tsx"
+	},
+	"dependencies": {
+		"@atomico/hooks": "3.39.0",
+		"atomico": "1.59.0"
+	},
+	"devDependencies": {
+		"@atomico/plugin-vite": "1.3.1",
+		"@typescript-eslint/eslint-plugin": "5.21.0",
+		"@typescript-eslint/parser": "5.21.0",
+		"@uppercod/vite-meta-url-load-css": "latest",
+		"@uppercod/vite-meta-url": "latest",
+		"eslint-config-prettier": "8.5.0",
+		"eslint-config-standard": "17.0.0",
+		"eslint-plugin-import": "2.26.0",
+		"eslint-plugin-n": "15.2.0",
+		"eslint-plugin-promise": "6.0.0",
+		"eslint": "8.15.0",
+		"prettier": "2.6.2",
+		"typescript": "4.6.4",
+		"vite": "2.9.8"
+	}
+}

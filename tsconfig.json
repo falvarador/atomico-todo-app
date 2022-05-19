@@ -1,0 +1,12 @@
+{
+	"include": ["src/**/*", "vite.config.js", "types.d.ts"],
+	"compilerOptions": {
+		"allowJs": true,
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"jsx": "react-jsx",
+		"jsxImportSource": "atomico",
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"outDir": ""
+	}
+}
