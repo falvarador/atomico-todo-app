@@ -4,9 +4,10 @@ import { TodoCheckbox } from "./TodoCheckbox";
 
 function todoList({ todos, setTodos }) {
 	const handleChange = e => {
-		const { id, done } = e.target.dataset;
-		const todo = todos.find(todo => todo.id === id);
-		todo.done = done;
+		const { name } = e.target;
+		const todo = todos.find(todo => todo.id === name);
+
+		todo.done = !todo.done;
 		setTodos([...todos]);
 	};
 
@@ -18,7 +19,11 @@ function todoList({ todos, setTodos }) {
 		<host shadowDom>
 			{todos.length
 				? todos.map(todo => (
-						<TodoCheckbox key={todo.id} data={todo} onchange={handleChange} />
+						<TodoCheckbox
+							key={todo.id}
+							value={todo}
+							handleChange={handleChange}
+						/>
 				  ))
 				: "No todos yet!"}
 			{todos.length ? (
@@ -39,6 +44,11 @@ todoList.styles = css`
 	:host {
 		display: block;
 		margin-top: 1rem;
+	}
+
+	todo-checkbox {
+		color: #2c3e50;
+		text-decoration: none;
 	}
 `;
 

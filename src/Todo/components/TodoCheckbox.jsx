@@ -1,22 +1,46 @@
-import { c } from "atomico";
+import { c, css } from "atomico";
 
-// import { useContext } from "../presentations/todo_context";
-
-function todoCheckbox({ id, description, done, onchange }) {
-	// const { title } = useContext();
+function todoCheckbox({ value, handleChange }) {
+	const { id, description, done } = value;
 
 	return (
-		<host shadowDom>
-			{/* {title}
-			<button onclick={() => setIsEdit(true)}>Edit</button>
-			<button>Delete</button> */}
+		<host shadowDom chec>
+			{
+				<label>
+					<input
+						type="checkbox"
+						name={id}
+						defaultChecked={done}
+						onchange={handleChange}
+					></input>
+					<span>{description}</span>
+				</label>
+			}
 		</host>
 	);
 }
 
-// todoCheckbox.props = {
-// 	setIsEdit: Function,
-// };
+todoCheckbox.props = {
+	checked: {
+		type: Boolean,
+		default: false,
+		Reflect: true,
+	},
+	value: Object,
+	handleChange: Function,
+};
+
+todoCheckbox.styles = css`
+	:host {
+		display: block;
+		margin-top: 1rem;
+	}
+
+	input:checked {
+		color: #efefef;
+		text-decoration: line-through;
+	}
+`;
 
 export const TodoCheckbox = c(todoCheckbox);
 customElements.define("todo-checkbox", TodoCheckbox);
