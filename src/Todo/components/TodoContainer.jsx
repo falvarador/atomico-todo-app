@@ -1,10 +1,20 @@
-import { c, useState } from "atomico";
+import { c } from "atomico";
+import { useLocalStorage } from "../../customs/hooks/useLocalStorage";
+import { useProvider } from "../presentations/todo_context";
 
 import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
 
 function todoContainer() {
-	const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useLocalStorage("todos", []);
+
+	useProvider(
+		{
+			todos,
+			setTodos,
+		},
+		[todos]
+	);
 
 	const handleAddTodo = todo => {
 		setTodos([...todos, todo]);
@@ -13,7 +23,7 @@ function todoContainer() {
 	return (
 		<host shadowDom>
 			<TodoForm handleAddTodo={handleAddTodo} />
-			<TodoList todos={todos} setTodos={setTodos} />
+			<TodoList />
 		</host>
 	);
 }

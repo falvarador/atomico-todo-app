@@ -1,8 +1,11 @@
 import { c, css } from "atomico";
+import { useContext } from "../presentations/todo_context";
 
 import { TodoCheckbox } from "./TodoCheckbox";
 
-function todoList({ todos, setTodos }) {
+function todoList() {
+	const { todos, setTodos } = useContext();
+
 	const handleChange = e => {
 		const { name } = e.target;
 		const todo = todos.find(todo => todo.id === name);
@@ -34,11 +37,6 @@ function todoList({ todos, setTodos }) {
 		</host>
 	);
 }
-
-todoList.props = {
-	todos: Array,
-	setTodos: Function,
-};
 
 todoList.styles = css`
 	:host {
